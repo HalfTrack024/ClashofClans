@@ -4,6 +4,7 @@ from time import sleep
 from screeninfo import get_monitors
 import random
 import math
+import pygetwindow as gw
 
 kGUI = kController()
 mGUI = mController()
@@ -74,15 +75,19 @@ def launch():
 
 
 def close():
-    with kGUI.pressed(Key.alt):
-        kGUI.press(Key.f4)
+    act_W = gw.getActiveWindow().title
+    if act_W == "Clash of Clans":
+        with kGUI.pressed(Key.alt):
+            kGUI.press(Key.f4)
+    else:
+        print('not on write app')
+    sleep(1)
 
 def cycleAttack():
     for i in range(2):
         launch()
         attack()
         close()
-        sleep(1)
         print(i)
 
 def main():
@@ -91,7 +96,7 @@ def main():
     mouseCMD(94, 1, 0,0)
     #mouseCMD(1940, 19)
     for j in range(5):
-        #cycleAttack()
+        cycleAttack()
         collect()
         print(j)
 
