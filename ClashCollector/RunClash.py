@@ -31,7 +31,7 @@ def mouseCMD(x_scaled, y_scaled, bound_x, bound_y):
     y : int = round(randomizer(y_scaled, bound_y)/100*height)
     mGUI.position = (x, y)
     mGUI.click(Button.left)
-    val = 1 + randomizer(.5, 3)
+    val = 1 + randomizer(.25, 3)
     sleep(val)
 
 def attack():
@@ -41,48 +41,60 @@ def attack():
     mouseCMD(74, 64, 3, 3)
     sleep(3)
     #Troop 1
-    mouseCMD(18, 94, 1, 1)
-    mouseCMD(95, 48, 2, 90)
-    mouseCMD(95, 48, 2, 90)
+    kGUI.press('q')
+    kGUI.release('q')
+    mouseCMD(95, 42, 2, 15)
     #Troop 2
-    mouseCMD(29, 94, 1, 1)
-    mouseCMD(95, 48, 2, 90)
+    kGUI.press('1')
+    kGUI.release('1')
+    mouseCMD(95, 42, 2, 15)
     #Troop 3
-    mouseCMD(36, 94, 1, 1)
-    mouseCMD(95, 48, 2, 80)
+    kGUI.press('2')
+    kGUI.release('2')
+    mouseCMD(95, 42, 2, 15)
     #Troop 4
-    #mouseCMD(13, 94, 1, 1)
-    mouseCMD(95, 48, 2, 90)
+    kGUI.press('3')
+    kGUI.release('3')
+    mouseCMD(95, 42, 2, 15)
+    #Troop 5
+    mouseCMD(95, 42, 2, 15)
     sleep(1)
 
 
 def collect():
-    pass
+    launch()
+    mouseCMD(69, 0.1, 0, 0)
+    mouseCMD(75, 82, 2,2)
+    mouseCMD(5, 88, 3, 3)
+    close()
 
 def launch():
     mouseCMD(20, 58, 3,3)
-    #mGUI.position = (500, 760)
-    #mGUI.click(Button.left)
-    sleep(randomizer(10, 2))
+    sleep(10)
 
 
 def close():
     with kGUI.pressed(Key.alt):
         kGUI.press(Key.f4)
 
+def cycleAttack():
+    for i in range(2):
+        launch()
+        attack()
+        close()
+        sleep(1)
+        print(i)
+
 def main():
     #Start 
     findSize()
     mouseCMD(94, 1, 0,0)
     #mouseCMD(1940, 19)
+    for j in range(5):
+        #cycleAttack()
+        collect()
+        print(j)
 
-    for i in range(12):
-        launch()
-        attack()
-        sleep(1)
-        close()
-        sleep(1)
-        print(i)
 
 # Run Code
 main()
