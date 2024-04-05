@@ -59,6 +59,8 @@ def attack():
     mouseCMD(95, 42, 2, 15)
     #Troop 5
     mouseCMD(95, 42, 2, 15)
+    #Troop 6
+    mouseCMD(95, 42, 2, 15)
     sleep(1)
 
 
@@ -70,7 +72,7 @@ def collect():
     close()
 
 def launch():
-    mouseCMD(20, 58, 3,3)
+    mouseCMD(20, 58, 1,1)
     sleep(10)
 
 
@@ -81,21 +83,21 @@ def close():
             kGUI.press(Key.f4)
     else:
         print('not on write app')
-    sleep(1)
+    sleep(3)
 
 def cycleAttack():
-    for i in range(2):
+    for i in range(4):
         launch()
         attack()
         close()
         print(i)
 
 def main():
-    #Start 
+    #Start 2
     findSize()
     mouseCMD(94, 1, 0,0)
     #mouseCMD(1940, 19)
-    for j in range(5):
+    for j in range(7):
         cycleAttack()
         collect()
         print(j)
