@@ -5,11 +5,16 @@ from screeninfo import get_monitors
 import random
 import math
 import pygetwindow as gw
+from multiprocessing import Process, Queue
 
 kGUI = kController()
 mGUI = mController()
 height : int = 0
 width : int = 0
+
+attacks = 0
+cycles = 0
+
 def findSize():
     for m in get_monitors():
         if m.is_primary:
@@ -72,7 +77,8 @@ def collect():
     close()
 
 def launch():
-    mouseCMD(20, 58, 1,1)
+    mouseCMD(20, 50, 1,1)
+    #mouseCMD(20, 58, 1,1)
     sleep(10)
 
 
@@ -85,23 +91,25 @@ def close():
         print('not on write app')
     sleep(3)
 
-def cycleAttack():
-    for i in range(4):
+def cycleAttack(q):
+    for i in range(5):
+        q.put({'attacks': i})
         launch()
         attack()
         close()
-        print(i)
+        sleep(1)
+        
 
-def main():
+def main(q):
     #Start 2
     findSize()
     mouseCMD(94, 1, 0,0)
     #mouseCMD(1940, 19)
-    for j in range(7):
-        cycleAttack()
+    for j in range(9):
+        q.put({'cycles': j})
+        cycleAttack(q)
         collect()
         print(j)
+        sleep(1)
 
 
-# Run Code
-main()
