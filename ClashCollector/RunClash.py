@@ -92,12 +92,11 @@ def close():
     sleep(3)
 
 def cycleAttack(q):
-    for i in range(5):
+    for i in range(7):
         q.put({'attacks': i})
         launch()
         attack()
         close()
-        sleep(1)
         
 
 def main(q):
@@ -110,6 +109,5 @@ def main(q):
         cycleAttack(q)
         collect()
         print(j)
-        sleep(1)
 
 

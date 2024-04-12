@@ -27,18 +27,18 @@ def update_gui(q):
     root.attributes('-alpha', 0.8)
     root.overrideredirect(True)
 
-    attack_name = tk.Label(root, text='Attack Count:  ', fg='#32CD32', font=("Arial", 12))
+    attack_name = tk.Label(root, text='Attack Count:  ', fg='#32CD32', font=("Arial", 14))
     attack_name.grid(row=0, column=0)
 
     # Create a label to display the counter
-    attack = tk.Label(root, text='0', fg='#32CD32', font=("Arial", 12))
+    attack = tk.Label(root, text='0', fg='#32CD32', font=("Arial", 14))
     attack.grid(row=0, column=1)
 
-    cycle_name = tk.Label(root, text='Collection Count:  ', fg='#32CD32', font=("Arial", 12))
+    cycle_name = tk.Label(root, text='Collection Count:  ', fg='#32CD32', font=("Arial", 14))
     cycle_name.grid(row=1, column=0)
 
     # Create a label to display the counter
-    cycle = tk.Label(root, text='0', fg='#32CD32', font=("Arial", 12))
+    cycle = tk.Label(root, text='0', fg='#32CD32', font=("Arial", 14))
     cycle.grid(row=1, column=1)
 
     # Start checking the queue
